@@ -1,0 +1,47 @@
+
+server:
+  contextPath: /
+  port: 8080
+
+logging:
+  pattern.console: >-
+    %white(%d{mmss})
+    %clr(${LOG_LEVEL_PATTERN:%replace(%replace(%replace(%replace(%p){
+    'ERROR','E'}){'WARN', 'W'}){'DEBUG', 'D'}){'INFO', 'I'}})
+    %m
+    %blue(%logger{0})
+    %n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}
+  level:
+    org.spring: INFO
+
+spring:
+  profiles.active: local
+  application.name: authrorization-service
+#  jpa:
+#    hibernate.ddl-auto: update
+#    properties.hibernate:
+#      show_sql: false
+#      format_sql: true
+#  datasource:
+#    url: jdbc:h2:mem:idm_db #;DB_CLOSE_DELAY=-1
+#    username: sa
+#    password:
+#    driver-class-name: org.h2.Driver
+
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/idm?autoReconnect=true&useSSL=false
+#    username: idm
+#    driverClassName: com.mysql.jdbc.Driver
+
+# H2
+#spring.h2.console:
+#  path: /h2
+#  enabled: true
+
+#liquibase:
+#  change-log: classpath:db/db-master.xml
+#  enabled: true
+
+#security.oauth2.client:
+#  client-id: idm
+#  client-secret: idmsec
