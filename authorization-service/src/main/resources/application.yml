@@ -13,10 +13,11 @@ logging:
     %n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}
   level:
     org.spring: INFO
+    org.spring.security: DEBUG
 
 spring:
   profiles.active: local
-  application.name: authrorization-service
+  application.name: auth-service
 #  jpa:
 #    hibernate.ddl-auto: update
 #    properties.hibernate:
