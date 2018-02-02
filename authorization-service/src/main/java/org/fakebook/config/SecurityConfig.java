@@ -3,47 +3,65 @@ package org.fakebook.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.oauth2.config.annotation.builders.InMemoryClientDetailsServiceBuilder;
+import org.springframework.security.oauth2.provider.ClientDetailsService;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @Configuration
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig {
+
+  private AuthConfigProperties authConfigProperties;
+
+  @Autowired
+  public void setAuthConfigProperties(AuthConfigProperties authConfigProperties) {
+    this.authConfigProperties = authConfigProperties;
+  }
 
   @Bean
-  @Override
-  public AuthenticationManager authenticationManagerBean() throws Exception {
-    return super.authenticationManagerBean();
+  public UserDetailsService userDetailsService() {
+
+    InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+
+    authConfigProperties.getUsers().forEach(
+        user -> manager.createUser(
+            User.withUsername(user.get("name"))
+                .password(user.get("pass"))
+                .roles(splitAndTrim(user.get("roles")))
+                .build()));
+
+    return manager;
   }
 
-  @Override
-  @Autowired
-  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+  @Bean
+  ClientDetailsService clientDetailsService() throws Exception {
 
-    auth.inMemoryAuthentication()
-        .withUser("mark")
-        .password("psw")
-        .roles("USER")
-        .accountExpired(false)
-        .disabled(false);
+    InMemoryClientDetailsServiceBuilder builder =
+        new InMemoryClientDetailsServiceBuilder();
+
+    authConfigProperties.getClients().forEach(
+        client -> builder.withClient(client.get("id"))
+            .secret(client.get("secret"))
+            .authorities("ROLE_CLIENT")
+            .redirectUris(splitAndTrim(client.get("redirect-uris")))
+            .scopes(splitAndTrim(client.get("scopes")))
+            .autoApprove(Boolean.valueOf(client.get("auto-approve")))
+            .authorizedGrantTypes(splitAndTrim(client.get("grant-types"))));
+
+    return builder.build();
   }
 
-  @Override
-  protected void configure(HttpSecurity http) throws Exception {
+  private String[] splitAndTrim(String line) {
+    if (line == null || line.isEmpty()) {
+      return new String[]{};
+    }
 
-    http.csrf().disable()
-        .formLogin().disable()
-        .anonymous().disable()
-        .httpBasic()
-        .and()
-        .sessionManagement()
-        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-        .and()
-        .authorizeRequests()
-        .antMatchers("/me").permitAll()
-        .antMatchers("/oauth/**").permitAll()
-        .anyRequest().authenticated();
+    String[] values = line.split(",");
+
+    for (int i = 0; i < values.length; i++) {
+      values[i] = values[i].trim();
+    }
+    return values;
   }
 }

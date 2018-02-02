@@ -1,8 +1,4 @@
 
-server:
-  contextPath: /
-  port: 8080
-
 logging:
   pattern.console: >-
     %white(%d{mmss})
@@ -12,37 +8,38 @@ logging:
     %blue(%logger{0})
     %n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}
   level:
-    org.spring: INFO
-    org.spring.security: DEBUG
+    org.fakebook: DEBUG
+server:
+  port: 8080
 
-spring:
-  profiles.active: local
-  application.name: auth-service
-#  jpa:
-#    hibernate.ddl-auto: update
-#    properties.hibernate:
-#      show_sql: false
-#      format_sql: true
-#  datasource:
-#    url: jdbc:h2:mem:idm_db #;DB_CLOSE_DELAY=-1
-#    username: sa
-#    password:
-#    driver-class-name: org.h2.Driver
-
-#  datasource:
-#    url: jdbc:mysql://localhost:3306/idm?autoReconnect=true&useSSL=false
-#    username: idm
-#    driverClassName: com.mysql.jdbc.Driver
-
-# H2
-#spring.h2.console:
-#  path: /h2
-#  enabled: true
-
-#liquibase:
-#  change-log: classpath:db/db-master.xml
-#  enabled: true
-
-#security.oauth2.client:
-#  client-id: idm
-#  client-secret: idmsec
+auth:
+  users:
+    - name: usr1
+      pass: psw
+      roles: USER
+    - name: usr2
+      pass: psw
+      roles: USER, ADMIN
+  clients:
+    - id: m1
+      secret: mm
+      scopes: default
+      grant-types: password, refresh_token, implicit, authorization_code, client_credentials
+      auto-approve: true
+      redirect-uris: localhost:8080
+    - id: m2
+      secret: mm
+      scopes: default
+      grant-types: password
+      auto-approve: true
+    - id: m3
+      secret: mm
+      scopes: default
+      grant-types: authorization_code
+      redirect-uris: localhost:8080
+      auto-approve: true
+    - id: m4
+      secret: mm
+      scopes: default
+      grant-types: client_credentials
+      auto-approve: true
