@@ -1,0 +1,17 @@
+
+logging:
+  pattern.console: >-
+    %white(%d{mmss})
+    %clr(${LOG_LEVEL_PATTERN:%replace(%replace(%replace(%replace(%p){
+    'ERROR','E'}){'WARN', 'W'}){'DEBUG', 'D'}){'INFO', 'I'}})
+    %m
+    %blue(%logger{0})
+    %n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}
+  level:
+    dm.auth: DEBUG
+server:
+  port: 8081
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://localhost:8080/me
