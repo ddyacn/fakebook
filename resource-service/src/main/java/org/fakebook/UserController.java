@@ -1,4 +1,4 @@
-package org.facebook;
+package org.fakebook;
 
 import java.security.Principal;
 import org.springframework.security.access.prepost.PreAuthorize;

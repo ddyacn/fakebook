@@ -1,4 +1,4 @@
-package org.facebook.config;
+package org.fakebook.config;
 
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 

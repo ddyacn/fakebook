@@ -8,7 +8,7 @@ logging:
     %blue(%logger{0})
     %n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}
   level:
-    dm.auth: DEBUG
+    org.fakebook: DEBUG
 server:
   port: 8081
 security:
