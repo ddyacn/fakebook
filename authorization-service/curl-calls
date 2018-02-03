@@ -17,7 +17,7 @@ curl -X "POST" "http://localhost:8080/oauth/token" \
 ## Auth: Implicit
 curl -X "POST" "http://localhost:8080/oauth/authorize" \
      -H 'Content-Type: application/x-www-form-urlencoded; charset=utf-8' \
-     -u 'usr1:***** Hidden credentials *****' \
+     -u 'usr1:psw' \
      --data-urlencode "client_id=m1" \
      --data-urlencode "redirect_uri=localhost:8080" \
      --data-urlencode "response_type=token"
@@ -25,14 +25,14 @@ curl -X "POST" "http://localhost:8080/oauth/authorize" \
 ## Auth: Client Credentials
 curl -X "POST" "http://localhost:8080/oauth/token" \
      -H 'Content-Type: application/x-www-form-urlencoded; charset=utf-8' \
-     -u 'm4:***** Hidden credentials *****' \
+     -u 'm4:mm' \
      --data-urlencode "client_id=m4" \
      --data-urlencode "grant_type=client_credentials"
 
 ## Auth: Password
 curl -X "POST" "http://localhost:8080/oauth/token" \
      -H 'Content-Type: application/x-www-form-urlencoded; charset=utf-8' \
-     -u 'm2:***** Hidden credentials *****' \
+     -u 'm2:mm' \
      --data-urlencode "password=psw" \
      --data-urlencode "username=usr1" \
      --data-urlencode "grant_type=password"
@@ -40,6 +40,6 @@ curl -X "POST" "http://localhost:8080/oauth/token" \
 ## Auth: Password: Refresh Token
 curl -X "POST" "http://localhost:8080/oauth/token" \
      -H 'Content-Type: application/x-www-form-urlencoded; charset=utf-8' \
-     -u 'm1:***** Hidden credentials *****' \
+     -u 'm1:mm' \
      --data-urlencode "refresh_token=6f682207-6675-4450-8933-c3c6aa31ecd4" \
      --data-urlencode "grant_type=refresh_token"
