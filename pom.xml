@@ -27,9 +27,10 @@
   </parent>
 
   <modules>
+    <module>auth-service</module>
     <module>auth-service-lightweight</module>
     <module>resource-service</module>
-    <module>resource-service-extended</module>
+    <module>resource-service-lightweight</module>
   </modules>
 
   <dependencies>

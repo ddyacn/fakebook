@@ -1,8 +1,4 @@
-
-server:
-  contextPath: /
-  port: 8081
-
+# Local configuration file
 logging:
   pattern.console: >-
     %white(%d{mmss})
@@ -13,16 +9,14 @@ logging:
     %n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}
   level:
     org.spring: INFO
+#    org.springframework.security: DEBUG
+#    org.springframework.boot.autoconfigure: DEBUG
 
-spring:
-  profiles.active: local
-  application.name: resource-service-extended
+spring.datasource.password: 11235
 
+management.security.enabled: false
 security:
-  oauth2:
-    resource:
-#      filter-order: 3
-      userInfoUri: http://localhost:8080/me
-#    client:
-#      client-id: apis
-#      client-secret: apissec
+  basic.enabled: false
+#  security.user:
+#    name: admin
+#    password: admin

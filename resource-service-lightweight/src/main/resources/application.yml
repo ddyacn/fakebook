@@ -1,8 +1,4 @@
 
-server:
-  contextPath: /
-  port: 8081
-
 logging:
   pattern.console: >-
     %white(%d{mmss})
@@ -12,17 +8,10 @@ logging:
     %blue(%logger{0})
     %n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}
   level:
-    org.spring: INFO
-
-spring:
-  profiles.active: local
-  application.name: resource-service-extended
-
+    org.fakebook: DEBUG
+server:
+  port: 8081
 security:
   oauth2:
     resource:
-#      filter-order: 3
-      userInfoUri: http://localhost:8080/me
-#    client:
-#      client-id: apis
-#      client-secret: apissec
+      user-info-uri: http://localhost:8080/me
