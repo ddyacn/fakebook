@@ -1,4 +1,4 @@
-package org.fakebook.config;
+package smpl.oauth2.config;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package org.fakebook.config;
+package smpl.oauth2.config;
 
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 

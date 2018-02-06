@@ -5,19 +5,18 @@
   http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.fakebook</groupId>
-  <artifactId>fakebook-parent</artifactId>
+  <groupId>smpl.oauth2</groupId>
+  <artifactId>oauth2</artifactId>
   <packaging>pom</packaging>
   <version>1.0.0</version>
 
-  <name>fakebook-parent</name>
-  <description>fakebook parent description</description>
+  <name>oauth2</name>
+  <description>parent description</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>1.8</java.version>
-    <!--<springfox.version>2.7.0</springfox.version>-->
   </properties>
 
   <parent>
@@ -28,9 +27,8 @@
   </parent>
 
   <modules>
-    <module>authorization-service</module>
+    <module>auth-service-lightweight</module>
     <module>resource-service</module>
-    <module>reporting-service</module>
   </modules>
 
   <dependencies>
@@ -38,14 +36,6 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
-    <!--<dependency>-->
-    <!--<groupId>org.springframework.boot</groupId>-->
-    <!--<artifactId>spring-boot-starter-actuator</artifactId>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-    <!--<groupId>org.springframework.boot</groupId>-->
-    <!--<artifactId>spring-boot-starter-data-jpa</artifactId>-->
-    <!--</dependency>-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-security</artifactId>
@@ -55,77 +45,6 @@
       <artifactId>spring-security-oauth2</artifactId>
       <version>2.2.1.RELEASE</version>
     </dependency>
-    <!--<dependency>-->
-    <!--<groupId>org.springframework.boot</groupId>-->
-    <!--<artifactId>spring-boot-configuration-processor</artifactId>-->
-    <!--<optional>true</optional>-->
-    <!--</dependency>-->
-
-    <!--<dependency>-->
-    <!--<groupId>org.liquibase</groupId>-->
-    <!--<artifactId>liquibase-core</artifactId>-->
-    <!--<version>3.5.1</version>-->
-    <!--</dependency>-->
-
-    <!--<dependency>-->
-    <!--<groupId>io.springfox</groupId>-->
-    <!--<artifactId>springfox-swagger-ui</artifactId>-->
-    <!--<version>${springfox.version}</version>-->
-    <!--<scope>compile</scope>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-    <!--<groupId>io.springfox</groupId>-->
-    <!--<artifactId>springfox-swagger2</artifactId>-->
-    <!--<version>${springfox.version}</version>-->
-    <!--<scope>compile</scope>-->
-    <!--</dependency>-->
-
-    <!--<dependency>-->
-    <!--<groupId>com.h2database</groupId>-->
-    <!--<artifactId>h2</artifactId>-->
-    <!--<version>1.4.196</version>-->
-    <!--<scope>runtime</scope>-->
-    <!--</dependency>-->
-
-    <!--<dependency>-->
-    <!--<groupId>com.mashape.unirest</groupId>-->
-    <!--<artifactId>unirest-java</artifactId>-->
-    <!--<version>1.4.9</version>-->
-    <!--</dependency>-->
-
-    <!--<dependency>-->
-    <!--<groupId>org.apache.httpcomponents</groupId>-->
-    <!--<artifactId>httpclient</artifactId>-->
-    <!--<version>4.3.6</version>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-    <!--<groupId>org.apache.httpcomponents</groupId>-->
-    <!--<artifactId>httpasyncclient</artifactId>-->
-    <!--<version>4.0.2</version>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-    <!--<groupId>org.apache.httpcomponents</groupId>-->
-    <!--<artifactId>httpmime</artifactId>-->
-    <!--<version>4.3.6</version>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-    <!--<groupId>org.json</groupId>-->
-    <!--<artifactId>json</artifactId>-->
-    <!--<version>20140107</version>-->
-    <!--</dependency>-->
-
-    <!--<dependency>-->
-    <!--<groupId>org.projectlombok</groupId>-->
-    <!--<artifactId>lombok</artifactId>-->
-    <!--<version>1.16.16</version>-->
-    <!--<scope>provided</scope>-->
-    <!--</dependency>-->
-
-    <!--<dependency>-->
-    <!--<groupId>org.springframework.boot</groupId>-->
-    <!--<artifactId>spring-boot-starter-test</artifactId>-->
-    <!--<scope>test</scope>-->
-    <!--</dependency>-->
   </dependencies>
 
   <build>

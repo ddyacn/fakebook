@@ -20,8 +20,8 @@
   </properties>
 
   <parent>
-    <groupId>org.fakebook</groupId>
-    <artifactId>fakebook-parent</artifactId>
+    <groupId>smpl.oauth2</groupId>
+    <artifactId>oauth2</artifactId>
     <version>1.0.0</version>
   </parent>
 

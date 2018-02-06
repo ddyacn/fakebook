@@ -1,4 +1,4 @@
-package org.fakebook;
+package smpl.oauth2;
 
 import java.security.Principal;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -23,6 +23,12 @@ public class UserController {
   @GetMapping("/client")
   @PreAuthorize("hasRole('CLIENT')")
   public Principal client(Principal principal) {
+    return principal;
+  }
+
+  @GetMapping("/client2")
+  @PreAuthorize("#oauth2.isClient()")
+  public Principal client2(Principal principal) {
     return principal;
   }
 }

@@ -1,4 +1,4 @@
-package org.fakebook.config;
+package smpl.oauth2.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

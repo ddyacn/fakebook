@@ -1,6 +1,6 @@
-package org.fakebook;
+package smpl.oauth2;
 
-import org.springframework.boot.Banner.Mode;
+import org.springframework.boot.Banner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
@@ -9,8 +9,8 @@ public class Application {
 
   public static void main(String[] args) {
     new SpringApplicationBuilder()
+        .bannerMode(Banner.Mode.OFF)
         .sources(Application.class)
-        .bannerMode(Mode.OFF)
         .run(args);
   }
 }
