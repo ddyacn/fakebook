@@ -1,0 +1,18 @@
+# Local configuration file
+logging:
+  pattern.console: >-
+    %white(%d{mmss})
+    %clr(${LOG_LEVEL_PATTERN:%replace(%replace(%replace(%replace(%p){
+    'ERROR','E'}){'WARN', 'W'}){'DEBUG', 'D'}){'INFO', 'I'}})
+    %m
+    %blue(%logger{0})
+    %n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}
+  level:
+    org.spring: INFO
+
+management.security.enabled: false
+security:
+  basic.enabled: false
+#  security.user:
+#    name: admin
+#    password: admin
